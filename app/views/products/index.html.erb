@@ -1,0 +1,29 @@
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<h1>Product List</h1>
+<table>
+    <thead>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    </thead>
+    <% @products.each do |product| %>
+    <tr>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td><%= product.price %></td>
+        <td>
+        <%= link_to "Edit Product", edit_product_path(product) %>
+        <%= link_to "Delete Product", product, method: :delete, data: {confirm: "Are You Sure You Want To Delete This Product?"}%>
+        </td>
+    </tr>
+    <% end %>
+</table>
+</body>
+<br>
+<%= link_to "Create Product", new_product_path %>
